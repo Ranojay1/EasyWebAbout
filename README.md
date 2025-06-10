@@ -1,18 +1,45 @@
 # EasyWebAbout
 
 ## Descripción
-EasyWebAbout es un proyecto de sitio web personal diseñado para proporcionar una experiencia de usuario moderna y accesible. Este sitio incluye características como un modo oscuro, un menú desplegable móvil y una estructura modular para facilitar el desarrollo y mantenimiento.
+EasyWebAbout es un sistema de sitio web personal completamente personalizable y moderno. Diseñado para desarrolladores, diseñadores y profesionales que quieren una presencia web elegante y funcional.
 
-## Características
-- **Modo oscuro:** Permite a los usuarios alternar entre el modo claro y oscuro para mejorar la experiencia visual.
-- **Menú móvil:** Un menú desplegable optimizado para dispositivos móviles.
-- **Diseño modular:** Código organizado en diferentes archivos y carpetas para facilitar la escalabilidad.
+## ✨ Características principales
+- **🌓 Modo oscuro/claro**: Toggle automático entre temas
+- **📱 Diseño responsive**: Perfecto en todos los dispositivos
+- **⚡ Carga rápida**: Optimizado para rendimiento
+- **🎨 Completamente personalizable**: Colores, textos, contenido
+- **🔧 Fácil configuración**: Un solo archivo de configuración
+- **📧 Formulario de contacto**: Sistema de contacto integrado
+- **🎵 Integración Spotify**: Muestra tu música favorita (opcional)
+- **🚀 SEO optimizado**: Meta tags y estructura optimizada
+
+## 🚀 Instalación rápida
+
+### 1. Clona el repositorio
+```bash
+git clone https://github.com/tuusuario/easywebabout.git
+cd easywebabout
+```
+
+### 2. Configura tu información
+```bash
+# Copia el template de configuración
+cp config-default.php config.php
+
+# Edita con tu información personal
+nano config.php  # o tu editor favorito
+```
+
+### 3. ¡Listo!
+Configura tu servidor web para apuntar al directorio del proyecto y ¡ya tienes tu sitio personal funcionando!
+
+📖 **[Ver guía de instalación detallada](INSTALL.md)**
 
 ## Estructura del Proyecto
 La estructura del proyecto incluye los siguientes directorios y archivos principales:
 
 ```
-route/
+cubenet.fun/
 ├── config.php
 ├── index.php
 ├── LICENSE
