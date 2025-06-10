@@ -16,9 +16,19 @@
                     <a href="<?php echo $instagram; ?>" aria-label="Instagram" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" title="<?php echo $discord; ?>" aria-label="Discord" class="social-link">
-                        <i class="fab fa-discord"></i>
-                    </a>
+                    <?php if (!empty($discord)): ?>
+                        <?php if (filter_var($discord, FILTER_VALIDATE_URL)): ?>
+                        <a href="<?php echo $discord; ?>" target="_blank" aria-label="Discord" class="social-link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <?php else: ?>
+                        <a href="#" onclick="copyDiscord('<?php echo htmlspecialchars($discord, ENT_QUOTES); ?>')" title="Click para copiar: <?php echo htmlspecialchars($discord, ENT_QUOTES); ?>" aria-label="Discord" class="social-link" style="cursor: pointer;">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <!-- Footer Discord tooltip -->
+                    <span id="footer-discord-tooltip" style="display:none; position:absolute; background: rgba(0,0,0,0.7); color:white; padding: 5px 10px; border-radius: 5px; font-size: 12px;">ID copiado!</span>
                 </div>
             </div>
             
@@ -63,8 +73,8 @@
 <?php endif; ?>
 
 <!-- Archivos JavaScript principales -->
+<script src="/includes/mobile-menu.js"></script>
 <script src="/includes/scripts.js"></script>
-<script src="/includes/test.js"></script>
 
 <!-- Controles UI -->
 <?php if ($sitio['mostrar_scroll_top']): ?>

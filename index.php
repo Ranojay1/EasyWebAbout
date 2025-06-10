@@ -28,10 +28,8 @@ $path = parse_url($request, PHP_URL_PATH);
 $routes = [
     '/' => 'views/home.php',
     '/about' => 'views/about.php',
-    '/services' => 'views/services.php',
     '/portfolio' => 'views/portfolio.php',
     '/contact' => 'views/contact.php',
-    '/panel' => 'views/panel.php',
     '/music' => 'views/music.php'
 ];
 

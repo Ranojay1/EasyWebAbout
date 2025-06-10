@@ -28,7 +28,7 @@ return [
     // Redes sociales - AGREGA TUS ENLACES
     'social' => [
         'instagram' => '', // https://www.instagram.com/tu_usuario
-        'discord' => '', // tu_usuario_discord
+        'discord' => '', // Puede ser un ID/username como "usuario#1234" o una URL completa como "https://discord.gg/invitacion"
         'github' => '', // https://github.com/tu_usuario
         'twitter' => '', // https://twitter.com/tu_usuario
         'youtube' => '',
@@ -273,10 +273,12 @@ return [
     // Configuración de contacto
     'contacto' => [
         'mostrar_formulario' => true,
-        'email_contacto' => 'tu@email.com', // Email donde recibirás los mensajes
         'texto_contacto' => 'Si tienes alguna pregunta o quieres contactarme para colaborar en algún proyecto, no dudes en escribirme.',
         'ubicacion_mapa' => 'Tu Ciudad, País', // Ubicación general para el mapa
-        'mostrar_mapa' => false // Cambiar a true si quieres mostrar un mapa
+        'mostrar_mapa' => false, // Cambiar a true si quieres mostrar un mapa
+        'webhook_url' => 'https://tu-servicio.com/webhook', // URL del webhook para recibir los mensajes (OBLIGATORIO)
+        'webhook_secret' => 'tu_clave_secreta', // Clave secreta para autenticar las solicitudes al webhook
+        'webhook_timeout' => 10, // Tiempo máximo de espera para la respuesta del webhook (en segundos)
     ],
     
     // Configuración del sitio
@@ -334,6 +336,28 @@ return [
         ],
         'canciones_favoritas' => [
             // Lista de tus canciones favoritas con enlaces de Spotify
+        ]
+    ],
+    
+    // Proyectos para mostrar en el portafolio y la página principal
+    'proyectos' => [
+        [
+            'nombre' => 'Sistema de Webhooks',
+            'descripcion' => 'Implementación de un sistema de contacto mediante webhooks para integración con múltiples servicios.',
+            'imagen' => 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+            'enlace' => 'https://github.com/tu-usuario/cubenet'
+        ],
+        [
+            'nombre' => 'Sitio Web Personal',
+            'descripcion' => 'Diseño y desarrollo de un sitio web personal con modo oscuro y responsive design.',
+            'imagen' => 'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80',
+            'enlace' => 'https://cubenet.fun'
+        ],
+        [
+            'nombre' => 'API REST para gestión de tareas',
+            'descripcion' => 'Desarrollo de una API REST para gestionar tareas y proyectos con autenticación JWT.',
+            'imagen' => 'https://images.unsplash.com/photo-1484417894907-623942c8ee29?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80',
+            'enlace' => '#'
         ]
     ],
 ];

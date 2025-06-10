@@ -1,0 +1,152 @@
+/**
+ * Mejoras de animación para el menú móvil v2.1
+ * Optimizado para mayor visibilidad y suavidad en las animaciones
+ */
+
+/* Mejoras al botón del menú móvil para mayor visibilidad */
+.mobile-menu-btn {
+    background-color: var(--primary);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 22px;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999990;
+}
+
+.mobile-menu-btn:active {
+    transform: scale(0.94);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: flex;
+    }
+}
+
+/* Mejoras animación del menú móvil */
+.simple-mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.simple-mobile-menu.active {
+    transform: translateX(0);
+}
+
+.simple-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.simple-overlay.active {
+    opacity: 1;
+}
+
+/* Mejoras de animación para elementos del menú */
+@media (max-width: 768px) {
+    /* Animaciones para los items del menú */
+    .simple-nav-item, .simple-nav-button {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+    }
+    
+    /* Aplicar la animación cuando el menú está activo con diferentes delays */
+    .simple-mobile-menu.active .simple-nav-item,
+    .simple-mobile-menu.active .simple-nav-button {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    /* Retrasos escalonados para cada elemento */
+    .simple-mobile-menu.active .simple-nav-item:nth-child(1),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(1) {
+        transition-delay: 0.05s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(2),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(2) {
+        transition-delay: 0.1s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(3),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(3) {
+        transition-delay: 0.15s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(4),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(4) {
+        transition-delay: 0.2s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(5),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(5) {
+        transition-delay: 0.25s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(6),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(6) {
+        transition-delay: 0.3s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(7),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(7) {
+        transition-delay: 0.35s;
+    }
+    
+    .simple-mobile-menu.active .simple-nav-item:nth-child(8),
+    .simple-mobile-menu.active .simple-nav-button:nth-child(8) {
+        transition-delay: 0.4s;
+    }
+    
+    /* Brillo especial para el botón de contacto highlight */
+    .simple-mobile-menu.active .contact-highlight {
+        animation: pulse 2s infinite;
+        transition-delay: 0.45s;
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
+        }
+    }
+}
+
+/* Mejoras visuales para dark mode */
+.dark-mode .mobile-menu-btn {
+    background-color: var(--primary-dark, #2d3748);
+    color: #ffffff;
+}
+
+.dark-mode .simple-mobile-menu {
+    background-color: #121212;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+}
+
+/* Fixes para dispositivos iOS y Android */
+@supports (-webkit-touch-callout: none) {
+    /* iOS specific */
+    .simple-mobile-content {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevenir rebotes en Safari */
+    html, body {
+        position: relative;
+        overflow-x: hidden;
+        overscroll-behavior-y: none;
+        height: 100%;
+    }
+}

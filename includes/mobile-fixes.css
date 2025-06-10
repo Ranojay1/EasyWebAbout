@@ -1,0 +1,146 @@
+/**
+ * Mejoras para móviles y modo oscuro v2.0
+ * Archivo optimizado para mayor compatibilidad móvil y eliminado código duplicado
+ * El menú móvil ahora se implementa desde NavigationBar.php
+ */
+
+/* ====== MENÚ MÓVIL OPTIMIZADO ====== */
+
+/* Mejoras para navegación móvil */
+@media (max-width: 768px) {
+    /* Quitando botones duplicados */
+    .hamburger {
+        display: none !important; /* Ocultar botón antiguo, ahora usamos mobile-menu-btn */
+    }
+    
+    /* Ocultar el menú móvil antiguo */
+    .mobile-menu {
+        display: none !important;
+    }
+    
+    /* Remover overlay antiguo */
+    .overlay {
+        display: none !important;
+    }
+    
+    /* La navegación antigua ahora se implementa con el componente NavigationBar.php */
+    
+    /* Mejorar espacio de navegación superior en dispositivos móviles */
+    .header {
+        padding: 10px 0 !important; /* Menos padding para dispositivos móviles */
+        height: 70px !important;
+    }
+    
+    /* Ajustar espacio entre contenido y cabecera */
+    main {
+        padding-top: 70px !important; /* Ajustar al nuevo alto del header */
+    }
+}
+
+/* ====== MEJORAS DE MODO OSCURO - VERSIÓN 2.0 ====== */
+
+/* Mejoras generales para modo oscuro */
+.dark-mode {
+    --dark: #f1f5f9; /* Color de texto más claro para mejor legibilidad */
+    --light: #0f172a;
+    --gray: #94a3b8;
+    --gray-light: #1e293b;
+    color-scheme: dark; /* Afecta los elementos nativos como scrollbars */
+}
+
+/* Modo oscuro mejorado para la cabecera */
+.dark-mode .header {
+    background: rgba(15, 23, 42, 0.95); /* Más oscuro para mejor contraste */
+    border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+}
+
+/* Mejora del contraste para enlaces en modo oscuro */
+.dark-mode a {
+    color: #60a5fa; /* Azul más claro para mejor contraste */
+}
+
+/* Mejoras para tarjetas en modo oscuro */
+.dark-mode .card {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Toggle de modo oscuro mejorado - Ahora para el botón antiguo si existe */
+.dark-mode-toggle {
+    transition: transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dark-mode-toggle:hover,
+.dark-mode-toggle:active {
+    transform: scale(1.1);
+}
+
+/* Modo oscuro preferencia del sistema operativo */
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode) {
+        --dark: #f1f5f9;
+        --light: #0f172a;
+        --gray: #94a3b8;
+        --gray-light: #1e293b;
+    }
+    
+    body:not(.light-mode) .header {
+        background: rgba(15, 23, 42, 0.95);
+        border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+    }
+    
+    body:not(.light-mode) a {
+        color: #60a5fa;
+    }
+    
+    body:not(.light-mode) .card {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(51, 65, 85, 0.5);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+}
+
+/* ==== MEJORAS DE ACCESIBILIDAD ==== */
+
+/* Mejor contraste y legibilidad */
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+    color: #f1f5f9;
+}
+
+.dark-mode p, .dark-mode li, .dark-mode blockquote {
+    color: #e2e8f0;
+}
+
+/* Mejoras para formularios en modo oscuro */
+.dark-mode input, .dark-mode textarea, .dark-mode select {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+
+.dark-mode input::placeholder, .dark-mode textarea::placeholder {
+    color: #94a3b8;
+}
+
+/* Mejor manejo de tablas en modo oscuro */
+.dark-mode table {
+    border-color: #334155;
+}
+
+.dark-mode th, .dark-mode td {
+    border-color: #334155;
+}
+
+.dark-mode th {
+    background-color: #1e293b;
+}
+
+.dark-mode tr:nth-child(even) {
+    background-color: #1e293b;
+}
+
+.dark-mode tr:hover {
+    background-color: #334155;
+}

@@ -2,11 +2,14 @@
 <html lang="es" class="<?php echo $sitio['modo_oscuro'] && isset($_COOKIE['darkMode']) && $_COOKIE['darkMode'] === 'true' ? 'dark-mode' : ''; ?>">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
     <title><?php echo $sitio['titulo']; ?></title>
     <meta name="description" content="<?php echo $sitio['descripcion_meta']; ?>">
     <meta name="keywords" content="<?php echo $sitio['palabras_clave']; ?>">
     <meta name="author" content="<?php echo $sitio['autor']; ?>">
+    <meta name="theme-color" content="<?php echo $sitio['color_primario']; ?>"
     
     <!-- Favicon -->
     <?php if (!empty($sitio['favicon'])): ?>
@@ -29,6 +32,14 @@
     <!-- Estilos CSS -->
     <link rel="stylesheet" href="/includes/styles.css">
     <link rel="stylesheet" href="/includes/extra-styles.css">
+    <link rel="stylesheet" href="/includes/mobile-fixes.css">
+    <link rel="stylesheet" href="/includes/menu-animation-fixes.css">
+    <link rel="stylesheet" href="/includes/zindex-fixes.css">
+    
+    <!-- Detectores y validadores -->
+    <script src="/includes/detector.js"></script>
+    <script src="/includes/menu-validator.js"></script>
+    <script src="/includes/zindex-validator.js"></script>
     <style type="text/css">
     <?php 
     // Definir función para convertir HEX a RGB localmente
@@ -397,7 +408,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 100; /* Valor más bajo que el menú móvil */
             transition: all 0.3s ease;
             padding: 1rem 0;
             background: rgba(255, 255, 255, 0.8);
@@ -512,24 +523,28 @@
         }
         
         .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 75%;
-            max-width: 350px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1001;
-            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-            padding: 5rem 2rem;
-            display: flex;
-            flex-direction: column;
+            display: none;
         }
         
         .mobile-menu.active {
+            display: flex;
+            position: fixed;
+            top: 0;
             right: 0;
-            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 350px;
+            height: 100vh;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 9999;
+            padding: 5rem 2rem;
+            flex-direction: column;
+            overflow-y: auto;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .dark-mode .mobile-menu.active {
+            background: rgba(15, 23, 42, 0.98);
+            border-left: 1px solid rgba(30, 41, 59, 0.7);
         }
         
         .close-menu {
@@ -924,38 +939,15 @@
                     <?php endif; ?>
                 </ul>
                 
-                <button class="hamburger" id="hamburger">
+                <button class="hamburger" id="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
         </div>
     </header>
-    
+
     <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="close-menu" id="close-menu">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <ul class="mobile-nav-links">
-            <li><a href="/" class="<?php echo $route === '/' ? 'active' : ''; ?>">Inicio</a></li>
-            <li><a href="/about" class="<?php echo $route === '/about' ? 'active' : ''; ?>">Sobre Mí</a></li>
-            <?php if ($sitio['paginas_activas']['services']): ?>
-            <li><a href="/services" class="<?php echo $route === '/services' ? 'active' : ''; ?>">Servicios</a></li>
-            <?php endif; ?>
-            <?php if ($sitio['paginas_activas']['portfolio']): ?>
-            <li><a href="/portfolio" class="<?php echo $route === '/portfolio' ? 'active' : ''; ?>">Portfolio</a></li>
-            <?php endif; ?>
-            <?php if ($config['musica']['mostrar_seccion']): ?>
-            <li><a href="/music" class="<?php echo $route === '/music' ? 'active' : ''; ?>">Música</a></li>
-            <?php endif; ?>
-            <?php if ($sitio['paginas_activas']['contact']): ?>
-            <li><a href="/contact" class="<?php echo $route === '/contact' ? 'active' : ''; ?>">Contacto</a></li>
-            <?php endif; ?>
-        </ul>
-        
-        <a href="/contact" class="mobile-contact-btn">Contactar ahora</a>
-    </div>
+    <!-- Duplicate code removed -->
     <style>
         
         .section-title {
@@ -1075,7 +1067,21 @@
             }
             
             .hamburger {
-                display: block;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: var(--primary);
+                color: white;
+                box-shadow: 0 4px 10px rgba(var(--primary-rgb), 0.3);
+                transition: all 0.3s ease;
+            }
+            
+            .hamburger:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.4);
             }
             
             .section {
@@ -1096,52 +1102,14 @@
 <body>
     <header class="header">
         <div class="container">
-            <nav class="navbar">
-                <a href="/" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-cube" style="color: white;"></i>
-                    </div>
-                    <div class="logo-text">CubeNet</div>
-                </a>
-                
-                <ul class="nav-links">
-                    <li><a href="/" class="<?php echo $route === '/' ? 'active' : ''; ?>">Inicio</a></li>
-                    <li><a href="/about" class="<?php echo $route === '/about' ? 'active' : ''; ?>">Sobre Mí</a></li>
-                    <?php if ($sitio['paginas_activas']['services']): ?>
-                    <li><a href="/services" class="<?php echo $route === '/services' ? 'active' : ''; ?>">Servicios</a></li>
-                    <?php endif; ?>
-                    <?php if ($sitio['paginas_activas']['portfolio']): ?>
-                    <li><a href="/portfolio" class="<?php echo $route === '/portfolio' ? 'active' : ''; ?>">Portfolio</a></li>
-                    <?php endif; ?>
-                    <?php if ($config['musica']['mostrar_seccion']): ?>
-                    <li><a href="/music" class="<?php echo $route === '/music' ? 'active' : ''; ?>">Música</a></li>
-                    <?php endif; ?>
-                    <?php if ($sitio['paginas_activas']['contact']): ?>
-                    <li><a href="/contact" class="<?php echo $route === '/contact' ? 'active' : ''; ?>">Contacto</a></li>
-                    <?php endif; ?>
-                </ul>
-                
-                <button class="hamburger" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
+            <!-- Incluir el componente de navegación simplificado -->
+            <div class="navbar">
+                <?php include 'NavigationBar.php'; ?>
+            </div>
         </div>
     </header>
     
-    <div class="mobile-menu" id="mobile-menu">
-        <button class="close-menu" id="close-menu">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <ul class="mobile-nav-links">
-            <li><a href="/" class="<?php echo $route === '/' ? 'active' : ''; ?>">Inicio</a></li>
-            <li><a href="/about" class="<?php echo $route === '/about' ? 'active' : ''; ?>">Sobre Mí</a></li>
-            <li><a href="/services" class="<?php echo $route === '/services' ? 'active' : ''; ?>">Servicios</a></li>
-            <li><a href="/portfolio" class="<?php echo $route === '/portfolio' ? 'active' : ''; ?>">Portfolio</a></li>
-            <li><a href="/contact" class="<?php echo $route === '/contact' ? 'active' : ''; ?>">Contacto</a></li>
-        </ul>
-    </div>
-    
-    <div class="overlay" id="overlay"></div>
+    <!-- Eliminamos la navegación duplicada ya que ahora está en NavigationBar.php -->
+    <!-- El overlay se define dentro de NavigationBar.php para evitar duplicación -->
     
     <main style="padding-top: 80px;">

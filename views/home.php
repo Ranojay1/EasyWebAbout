@@ -14,7 +14,18 @@
 
             <div class="flex" style="gap: 20px;">
                 <a href="<?php echo $instagram; ?>" style="color: var(--dark); font-size: 24px;"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="<?php echo $discord; ?>" style="color: var(--dark); font-size: 24px;"><i class="fab fa-discord"></i></a>
+                
+                <?php if (!empty($discord)): ?>
+                    <?php if (filter_var($discord, FILTER_VALIDATE_URL)): ?>
+                    <!-- Si es una URL completa (enlace a servidor) -->
+                    <a href="<?php echo $discord; ?>" target="_blank" style="color: var(--dark); font-size: 24px;"><i class="fab fa-discord"></i></a>
+                    <?php else: ?>
+                    <!-- Si es un ID o nombre de usuario -->
+                    <a href="#" onclick="copyDiscord('<?php echo htmlspecialchars($discord, ENT_QUOTES); ?>')" title="Click para copiar: <?php echo htmlspecialchars($discord, ENT_QUOTES); ?>" style="color: var(--dark); font-size: 24px; cursor: pointer;"><i class="fab fa-discord"></i></a>
+                    <span id="discord-tooltip" style="display:none; position:absolute; background: rgba(0,0,0,0.7); color:white; padding: 5px 10px; border-radius: 5px; font-size: 12px; margin-top: 30px;">ID copiado!</span>
+                    <?php endif; ?>
+                <?php endif; ?>
+                
                 <?php if (!empty($social['github'])): ?>
                 <a href="<?php echo $social['github']; ?>" style="color: var(--dark); font-size: 24px;"><i class="fab fa-github"></i></a>
                 <?php endif; ?>

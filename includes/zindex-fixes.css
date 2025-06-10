@@ -1,0 +1,81 @@
+/**
+ * z-index fixes para garantizar que los elementos móviles estén siempre visibles
+ * y por encima de cualquier otro contenido de la página
+ */
+
+/* Garantizar que el menú móvil esté siempre por encima de todo */
+#simple-mobile-menu.simple-mobile-menu {
+    z-index: 10000000; /* Valor extremadamente alto para superar cualquier otro z-index */
+    position: fixed; /* Asegurarse de que siempre esté fijo */
+    top: 0;
+    right: 0;
+    width: 280px; 
+    max-width: 85%;
+    height: 100vh; /* Usar vh para asegurar altura completa */
+    transform: translateX(100%);
+    will-change: transform; /* Optimiza la animación */
+}
+
+/* Clase active para menú móvil */
+#simple-mobile-menu.simple-mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* Garantizar que el overlay esté por encima del contenido pero debajo del menú */
+#simple-overlay.simple-overlay {
+    z-index: 9999999; /* Justo debajo del menú móvil */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Usar vh para asegurar altura completa */
+}
+
+/* Garantizar que el botón de menú móvil sea siempre clickeable */
+#mobile-menu-btn.mobile-menu-btn {
+    z-index: 9999998; /* Alto pero por debajo del overlay y del menú */
+}
+
+/* Ajustes para posicionamiento correcto en iOS */
+@supports (-webkit-touch-callout: none) {
+    #simple-mobile-menu.simple-mobile-menu, 
+    #simple-overlay.simple-overlay {
+        height: 100%; /* Para iOS es mejor usar % en vez de vh */
+        padding-top: env(safe-area-inset-top, 0); /* Respeta el notch en iPhones modernos */
+        padding-bottom: env(safe-area-inset-bottom, 0); /* Respeta la barra inferior */
+    }
+    
+    /* Asegurar que la cabecera del menú respete el notch */
+    .simple-mobile-header {
+        padding-top: calc(20px + env(safe-area-inset-top, 0));
+    }
+}
+
+/* Clase para body cuando el menú está abierto - extra seguridad */
+body.menu-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* Asegurar que main content nunca se superponga al menú */
+main, .main-content, #content, .content {
+    z-index: 10; /* Valor bajo para asegurar que siempre esté debajo del menú */
+    position: relative; /* Necesario para que z-index funcione */
+}
+
+/* Estilo específico para cuando el menú está abierto */
+body.menu-open .header,
+body.menu-open main,
+body.menu-open .main-content,
+body.menu-open #content,
+body.menu-open .content {
+    pointer-events: none; /* Deshabilita los clics en el contenido cuando el menú está abierto */
+}
+
+/* Permitir eventos solo en el menú cuando está abierto */
+body.menu-open #simple-mobile-menu,
+body.menu-open #simple-mobile-menu * {
+    pointer-events: auto;
+}
