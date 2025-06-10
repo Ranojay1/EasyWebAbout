@@ -116,7 +116,7 @@ return [
             'enlace' => '#',
             'github' => 'https://github.com/cubenet/primer-videojuego',
             'tecnologias' => ['JavaScript', 'Phaser', 'HTML5'],
-            'destacado' => false
+            'destacado' => true
         ],
         [
             'nombre' => 'Bot de Discord',
@@ -125,7 +125,7 @@ return [
             'enlace' => '#',
             'github' => 'https://github.com/cubenet/discord-bot',
             'tecnologias' => ['NodeJS', 'Discord.js'],
-            'destacado' => false
+            'destacado' => true
         ],
         [
             'nombre' => 'Sitio Web Personal',
@@ -134,7 +134,7 @@ return [
             'enlace' => '#',
             'github' => 'https://github.com/cubenet/personal-website',
             'tecnologias' => ['PHP', 'HTML/CSS', 'JavaScript'],
-            'destacado' => false
+            'destacado' => true
         ]
     ],
     
@@ -292,7 +292,7 @@ return [
         'titulo_seccion' => 'Mi música favorita',
         'descripcion' => 'Estas son algunas de las canciones que me inspiran mientras programo.',
         'titulo_actividad_reciente' => 'Mi selección actual',
-        'descripcion_actividad_reciente' => 'Esta es una selección de canciones que represento lo que estoy escuchando más últimamente',
+        'descripcion_actividad_reciente' => 'Esta es una selección de canciones que representan lo que estoy escuchando más últimamente',
         'playlist_id' => '09XzlNf5il54wPWEf3b5m3', // ID de playlist de Spotify
         'artistas_favoritos' => [
             'EZVIT810',
