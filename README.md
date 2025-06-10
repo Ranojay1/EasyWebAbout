@@ -12,7 +12,7 @@ EasyWebAbout es un proyecto de sitio web personal diseñado para proporcionar un
 La estructura del proyecto incluye los siguientes directorios y archivos principales:
 
 ```
-cubenet.fun/
+route/
 ├── config.php
 ├── index.php
 ├── LICENSE
@@ -26,9 +26,6 @@ cubenet.fun/
 │   ├── scripts.js
 │   ├── styles.css
 │   ├── test.js
-├── pages/
-│   ├── about.php
-│   ├── home.php
 ├── views/
 │   ├── 404.php
 │   ├── about.php
@@ -46,7 +43,7 @@ cubenet.fun/
    ```bash
    cd easywebabout
    ```
-3. Configura tu servidor web para apuntar al directorio `cubenet.fun`.
+3. Configura tu servidor web para apuntar al directorio `easyWebAbout`.
 
 ## Uso
 - Accede al sitio web desde tu navegador.

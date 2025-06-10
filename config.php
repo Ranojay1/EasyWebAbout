@@ -116,7 +116,7 @@ return [
             'enlace' => '#',
             'github' => 'https://github.com/cubenet/primer-videojuego',
             'tecnologias' => ['JavaScript', 'Phaser', 'HTML5'],
-            'destacado' => true
+            'destacado' => false
         ],
         [
             'nombre' => 'Bot de Discord',
@@ -125,7 +125,7 @@ return [
             'enlace' => '#',
             'github' => 'https://github.com/cubenet/discord-bot',
             'tecnologias' => ['NodeJS', 'Discord.js'],
-            'destacado' => true
+            'destacado' => false
         ],
         [
             'nombre' => 'Sitio Web Personal',
@@ -134,7 +134,7 @@ return [
             'enlace' => '#',
             'github' => 'https://github.com/cubenet/personal-website',
             'tecnologias' => ['PHP', 'HTML/CSS', 'JavaScript'],
-            'destacado' => true
+            'destacado' => false
         ]
     ],
     
@@ -188,50 +188,27 @@ return [
         ]
     ],
     
-    // Timeline y trayectoria personal
-    'trayectoria' => [
-        'titulo_seccion' => 'Mi Trayectoria',
-        'descripcion' => 'Un vistazo a mi formación y experiencia laboral',
-        'mostrar_seccion' => true,
-        'educacion' => [
-            [
-                'titulo' => 'Estudiante de Educación Secundaria',
-                'institucion' => 'Instituto Actual',
-                'periodo' => '2023 - Presente',
-                'descripcion' => 'Estudiante de educación secundaria con enfoque en tecnología'
-            ],
-            [
-                'titulo' => 'Aprendizaje avanzado',
-                'institucion' => 'Aprendizaje autodidacta',
-                'periodo' => '2023',
-                'descripcion' => 'Aprendizaje semicompleto de HTML, CSS, JavaScript y Node.js'
-            ],
-            [
-                'titulo' => 'Primeros pasos en programación',
-                'institucion' => 'Aprendizaje autodidacta',
-                'periodo' => '2022',
-                'descripcion' => 'Fundamentos de programación y lógica computacional'
-            ]
+    // Timeline de historia personal
+    'timeline' => [
+        [
+            'año' => 2021,
+            'titulo' => 'Primer contacto con la programación',
+            'descripcion' => 'Comencé a aprender HTML y CSS por mi cuenta.'
         ],
-        'experiencia' => [
-            [
-                'titulo' => 'Primer contacto con la programación',
-                'lugar' => 'Aprendizaje autodidacta',
-                'periodo' => '2021',
-                'descripcion' => 'Comencé a aprender HTML y CSS por mi cuenta.'
-            ],
-            [
-                'titulo' => 'Primeros proyectos',
-                'lugar' => 'Proyectos personales',
-                'periodo' => '2022',
-                'descripcion' => 'Desarrollé mis primeras páginas web y aprendí JavaScript.'
-            ],
-            [
-                'titulo' => 'Exploración de backend',
-                'lugar' => 'Proyectos personales',
-                'periodo' => '2023',
-                'descripcion' => 'Comencé a aprender NodeJS y PHP para crear aplicaciones completas.'
-            ]
+        [
+            'año' => 2022,
+            'titulo' => 'Primeros proyectos',
+            'descripcion' => 'Desarrollé mis primeras páginas web y aprendí JavaScript.'
+        ],
+        [
+            'año' => 2023,
+            'titulo' => 'Exploración de backend',
+            'descripcion' => 'Comencé a aprender NodeJS y PHP para crear aplicaciones completas.'
+        ],
+        [
+            'año' => 2024,
+            'titulo' => 'Desarrollo de videojuegos',
+            'descripcion' => 'Me adentré en el desarrollo de videojuegos con Phaser y Unity.'
         ]
     ],
     
