@@ -1,0 +1,40 @@
+# Configuración personal - no subir al repositorio
+config.php
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos temporales
+*.tmp
+*.temp
+*~
+
+# Archivos de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de backup
+*.bak
+*.backup
+
+# Variables de entorno (si las usas)
+.env
+.env.local
+
+# Cache
+cache/
+tmp/
+
+# Uploads de usuarios (si tienes)
+uploads/
+user-uploads/
+
+# Archivos de configuración de servidor
+.htaccess.local
+nginx.conf.local
