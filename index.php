@@ -21,7 +21,7 @@ $instagram = $social['instagram'];
 $discord = $social['discord'];
 
 // Router principal
-$request = $_SERVER['REQUEST_URI'];
+$request = $_SERVER['REQUEST_URI']; // Obtener la URI solicitada
 $path = parse_url($request, PHP_URL_PATH);
 
 // Configuración de rutas
